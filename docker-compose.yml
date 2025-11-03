@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  backend:
+    working_dir: /app
+    image: node:lts-alpine
+    command: sh -c "cd backend && npm i && npm run start" 
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      FINNHUB_API_KEY: "d42iqlhr01qorlerjo0gd42iqlhr01qorlerjo10"
+  frontend:
+    working_dir: /app
+    image: node:lts-alpine
+    command: sh -c "cd frontend && npm i && npm run dev" 
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
