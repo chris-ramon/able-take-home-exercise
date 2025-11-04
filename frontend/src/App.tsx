@@ -8,7 +8,6 @@ function App() {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-    console.log(">>>>>>>>>> here")
     ws.current = io('http://localhost:3000');
 
     ws.current.on('rates', (data) => {
