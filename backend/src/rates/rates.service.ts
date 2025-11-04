@@ -9,7 +9,7 @@ export class RatesService {
         const socket = new WebSocket('wss://ws.finnhub.io?token='+process.env.FINNHUB_API_KEY);
   
         socket.addEventListener('open', function (event) {
-            socket.send(JSON.stringify({'type': 'subscribe', 'symbol': 'COINBASE:BTC-USD'}));
+            socket.send(JSON.stringify({'type': 'subscribe', 'symbol': 'BINANCE:ETHUSDC'}));
         });
   
         socket.addEventListener('message', function (event) {

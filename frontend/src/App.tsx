@@ -14,7 +14,7 @@ function App() {
       const { data: ratesData } = data?.payload || {};
 
       for(const rate of ratesData) {
-        if(rate.s !== 'COINBASE:BTC-USD') {
+        if(rate.s !== 'BINANCE:ETHUSDC') {
           continue
         }
 
@@ -26,8 +26,6 @@ function App() {
           { time: new Date(timestamp).toLocaleTimeString(), price }
         ]);
       }
-
-      console.log(chartData);
     });
 
   	return () => {
