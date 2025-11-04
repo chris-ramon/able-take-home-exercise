@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/app
     environment:
-      FINNHUB_API_KEY: "d42iqlhr01qorlerjo0gd42iqlhr01qorlerjo10"
+      FINNHUB_API_KEY=${FINNHUB_API_KEY}
   frontend:
     working_dir: /app
     image: node:lts-alpine
