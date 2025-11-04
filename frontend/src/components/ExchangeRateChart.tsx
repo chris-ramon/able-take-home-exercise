@@ -7,10 +7,10 @@ import {
   Tooltip,
 } from 'recharts';
 
-export function ExchangeRateChart({ chartData }) {
+export function ExchangeRateChart({ title, chartData }) {
   return (
     <>
-      <h2>ETH → USDC</h2>
+      <h2>{title}</h2>
       <AreaChart
         style={{
           width: '100%',

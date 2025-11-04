@@ -6,6 +6,8 @@ import { ExchangeRateChart } from './components/ExchangeRateChart';
 function App() {
   const ws = useRef(null);
   const [ethUsdcChartData, setEthUsdcChartData] = useState([]);
+  const [ethUsdtChartData, setEthUsdtChartData] = useState([]);
+  const [ethBtcChartData, setEthBtcChartData] = useState([]);
 
   useEffect(() => {
     ws.current = io('http://localhost:3000');
@@ -14,17 +16,35 @@ function App() {
       const { data: ratesData } = data?.payload || {};
 
       for (const rate of ratesData) {
-        if (rate.s !== 'BINANCE:ETHUSDC') {
-          continue;
+        if (rate.s === 'BINANCE:ETHUSDC') {
+          const timestamp = rate.t;
+          const price = rate.p;
+
+          setEthUsdcChartData((prevData) => [
+            ...prevData,
+            { time: new Date(timestamp).toLocaleTimeString(), price },
+          ]);
         }
 
-        const timestamp = rate.t;
-        const price = rate.p;
+        if (rate.s === 'BINANCE:ETHUSDT') {
+          const timestamp = rate.t;
+          const price = rate.p;
 
-        setEthUsdcChartData((prevData) => [
-          ...prevData,
-          { time: new Date(timestamp).toLocaleTimeString(), price },
-        ]);
+          setEthUsdtChartData((prevData) => [
+            ...prevData,
+            { time: new Date(timestamp).toLocaleTimeString(), price },
+          ]);
+        }
+
+        if (rate.s === 'BINANCE:ETHBTC') {
+          const timestamp = rate.t;
+          const price = rate.p;
+
+          setEthBtcChartData((prevData) => [
+            ...prevData,
+            { time: new Date(timestamp).toLocaleTimeString(), price },
+          ]);
+        }
       }
     });
 
@@ -38,7 +58,9 @@ function App() {
   return (
     <>
       <h1>Dashboard</h1>
-      <ExchangeRateChart chartData={ethUsdcChartData} />
+      <ExchangeRateChart title={'ETH → USDC'} chartData={ethUsdcChartData} />
+      <ExchangeRateChart title={'ETH → USDT'} chartData={ethUsdtChartData} />
+      <ExchangeRateChart title={'ETH → BTC'} chartData={ethBtcChartData} />
     </>
   );
 }
