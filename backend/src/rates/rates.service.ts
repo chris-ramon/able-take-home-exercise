@@ -10,6 +10,8 @@ export class RatesService {
   
         socket.addEventListener('open', function (event) {
             socket.send(JSON.stringify({'type': 'subscribe', 'symbol': 'BINANCE:ETHUSDC'}));
+            socket.send(JSON.stringify({'type': 'subscribe', 'symbol': 'BINANCE:ETHUSDT'}));
+            socket.send(JSON.stringify({'type': 'subscribe', 'symbol': 'BINANCE:ETHBTC'}));
         });
   
         socket.addEventListener('message', function (event) {
