@@ -5,7 +5,7 @@ import { ExchangeRateChart } from './components/ExchangeRateChart';
 
 function App() {
   const ws = useRef(null);
-  const [chartData, setChartData] = useState([]);
+  const [ethUsdcChartData, setEthUsdcChartData] = useState([]);
 
   useEffect(() => {
     ws.current = io('http://localhost:3000');
@@ -21,7 +21,7 @@ function App() {
         const timestamp = rate.t;
         const price = rate.p;
 
-        setChartData((prevData) => [
+        setEthUsdcChartData((prevData) => [
           ...prevData,
           { time: new Date(timestamp).toLocaleTimeString(), price },
         ]);
@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <h1>Dashboard</h1>
-      <ExchangeRateChart chartData={chartData} />
+      <ExchangeRateChart chartData={ethUsdcChartData} />
     </>
   );
 }
