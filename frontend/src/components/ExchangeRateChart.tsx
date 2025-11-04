@@ -6,10 +6,11 @@ import {
   CartesianGrid,
   Tooltip,
 } from 'recharts';
+import './ExchangeRateChart.css';
 
 export function ExchangeRateChart({ title, chartData }) {
   return (
-    <>
+    <div className='exchangeRateChart'>
       <h2>{title}</h2>
       <AreaChart
         style={{
@@ -32,6 +33,6 @@ export function ExchangeRateChart({ title, chartData }) {
         <Tooltip />
         <Area type='monotone' dataKey='price' stroke='#8884d8' fill='#8884d8' />
       </AreaChart>
-    </>
+    </div>
   );
 }

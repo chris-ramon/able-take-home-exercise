@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+.exchangeRateCharts {
+  display: flex;
+  gap: 100px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -58,9 +58,11 @@ function App() {
   return (
     <>
       <h1>Dashboard</h1>
-      <ExchangeRateChart title={'ETH → USDC'} chartData={ethUsdcChartData} />
-      <ExchangeRateChart title={'ETH → USDT'} chartData={ethUsdtChartData} />
-      <ExchangeRateChart title={'ETH → BTC'} chartData={ethBtcChartData} />
+      <div className='exchangeRateCharts'>
+        <ExchangeRateChart title={'ETH → USDC'} chartData={ethUsdcChartData} />
+        <ExchangeRateChart title={'ETH → USDT'} chartData={ethUsdtChartData} />
+        <ExchangeRateChart title={'ETH → BTC'} chartData={ethBtcChartData} />
+      </div>
     </>
   );
 }
